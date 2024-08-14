@@ -13,7 +13,7 @@ import {
 export function AccountMenu() {
   return (
     <DropdownMenu>
-      {/* DropdownMenuTrigger necessário colocar em volta do botão do componente  */}
+      {/* DropdownMenuTrigger: necessário colocar em volta do botão dentro do componente, pois ele já é um botão  */}
 
       <DropdownMenuTrigger asChild>
         <Button
