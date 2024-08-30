@@ -1,3 +1,6 @@
+// import { rejects } from 'assert'
+// import { resolve } from 'path'
+
 import { api } from '@/lib/axios'
 
 interface UpdateProfileBody {
@@ -6,5 +9,9 @@ interface UpdateProfileBody {
 }
 
 export async function updateProfile({ description, name }: UpdateProfileBody) {
+  // await new Promise((resolve, reject) => {
+  //   setTimeout(reject, 3000)
+  // })
+
   await api.put('/profile', { name, description })
 }
