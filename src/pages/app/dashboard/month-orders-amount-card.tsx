@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export function MonthOrdersAmountCard() {
   const { data: monthOrdersAmount } = useQuery({
-    queryKey: ['metrics', 'day-orders-amount'],
+    queryKey: ['metrics', 'month-orders-amount'],
     queryFn: getMonthOrdersAmount,
   })
 

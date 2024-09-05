@@ -6,12 +6,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export function DayOrdersAmountCard() {
   const { data: dayOrdersAmount } = useQuery({
-    queryKey: ['metrics', 'day-orders-amount'],
     queryFn: getDayOrdersAmount,
+    queryKey: ['metrics', 'day-orders-amount'],
   })
 
   console.log(dayOrdersAmount)
-
   return (
     <Card>
       <CardHeader className="flex-row items-center justify-between space-y-0 pb-2">
