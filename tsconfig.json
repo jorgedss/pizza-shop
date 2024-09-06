@@ -6,8 +6,12 @@
   ],
   "compilerOptions": {
     "baseUrl": ".",
+    "types": [
+      "vitest/globals",
+    ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+     
     }
   }
 }
