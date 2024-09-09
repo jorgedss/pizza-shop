@@ -6,6 +6,10 @@ import { Pagination } from './pagination'
 const onPageChangeCallback = vi.fn()
 
 describe('Pagination', () => {
+  beforeEach(() => {
+    onPageChangeCallback.mockClear()
+    // reseta a chamada da função onPageChangeCallback após cada instancia do teste
+  })
   it('Shoud display the right amount of pages and results', () => {
     const wrapper = render(
       <Pagination
@@ -39,5 +43,68 @@ describe('Pagination', () => {
     await user.click(nextPageButton)
 
     expect(onPageChangeCallback).toHaveBeenCalledWith(1)
+  })
+
+  it('Shoud be able to navigate to the previous page', async () => {
+    const wrapper = render(
+      <Pagination
+        pageIndex={5}
+        totalCount={200}
+        perPage={10}
+        onPageChange={onPageChangeCallback}
+      />,
+    )
+
+    const nextPageButton = wrapper.getByRole('button', {
+      name: 'Página anterior',
+    })
+
+    const user = userEvent.setup()
+
+    await user.click(nextPageButton)
+
+    expect(onPageChangeCallback).toHaveBeenCalledWith(4)
+  })
+
+  it('Shoud be able to navigate to the first page', async () => {
+    const wrapper = render(
+      <Pagination
+        pageIndex={5}
+        totalCount={200}
+        perPage={10}
+        onPageChange={onPageChangeCallback}
+      />,
+    )
+
+    const nextPageButton = wrapper.getByRole('button', {
+      name: 'Primeira página',
+    })
+
+    const user = userEvent.setup()
+
+    await user.click(nextPageButton)
+
+    expect(onPageChangeCallback).toHaveBeenCalledWith(0)
+  })
+
+  it('Shoud be able to navigate to the last page', async () => {
+    const wrapper = render(
+      <Pagination
+        pageIndex={0}
+        totalCount={200}
+        perPage={10}
+        onPageChange={onPageChangeCallback}
+      />,
+    )
+
+    const nextPageButton = wrapper.getByRole('button', {
+      name: 'Última página',
+    })
+
+    const user = userEvent.setup()
+
+    await user.click(nextPageButton)
+
+    expect(onPageChangeCallback).toHaveBeenCalledWith(19)
   })
 })
