@@ -25,7 +25,7 @@ export function MonthOrdersAmountCard() {
               {monthOrdersAmount.amount.toLocaleString('pt-BR')}
             </span>
             <p className="text-xs text-muted-foreground">
-              {monthOrdersAmount.amount < 0 ? (
+              {monthOrdersAmount.amount > 0 ? (
                 <>
                   <span className="text-emerald-500 dark:text-emerald-400">
                     +{monthOrdersAmount.diffFromLastMonth}%
