@@ -9,7 +9,7 @@ export const registerRestaurantMock = http.post<never, RegisterRestaurantBody>(
 
     if (restaurantName === 'Pizza Shop') {
       return new HttpResponse(null, {
-        status: 200,
+        status: 201,
       })
     }
 
