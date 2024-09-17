@@ -3,18 +3,16 @@ import { expect, test } from '@playwright/test'
 test('sign up successfully', async ({ page }) => {
   await page.goto('/sign-up', { waitUntil: 'networkidle' })
 
-  await page.getByLabel('Nome do estabelecimeno').fill('Pizza shop')
-  await page.getByLabel('Seu nome').fill('John Do')
-  await page.getByLabel('Seu e-mail').fill('johndo@example.com')
-  await page.getByLabel('Seu celular').fill('36565387454')
+  await page.getByLabel('Nome do estabelecimento').fill('Pizza Shop')
+  await page.getByLabel('Seu nome').fill('John Doe')
+  await page.getByLabel('Seu e-mail').fill('johndoe@example.com')
+  await page.getByLabel('Seu celular').fill('123812641264')
 
   await page.getByRole('button', { name: 'Finalizar cadastro' }).click()
 
-  const toast = page.getByText('Restaurante cadastrado com sucesso!')
+  const toast = page.getByText('Restaurante cadastrado com sucesso')
 
   expect(toast).toBeVisible()
-
-  //   await page.waitForTimeout(2000)
 })
 
 test('sign up with error', async ({ page }) => {
