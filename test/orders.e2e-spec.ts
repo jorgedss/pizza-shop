@@ -43,7 +43,7 @@ test('filter by order id', async ({ page }) => {
   await page.getByPlaceholder('ID do Pedido').fill('order-11')
   await page.getByRole('button', { name: 'Filtrar reultados' }).click()
 
-  expect(page.getByRole('cell', { name: 'order-11' })).toBeVisible()
+  await expect(page.getByRole('cell', { name: 'order-11' })).toBeVisible()
 })
 
 test('filter by customer name ', async ({ page }) => {
@@ -52,7 +52,7 @@ test('filter by customer name ', async ({ page }) => {
   await page.getByPlaceholder('Nome do cliente').fill('Customer 11')
   await page.getByRole('button', { name: 'Filtrar reultados' }).click()
 
-  expect(page.getByRole('cell', { name: 'Customer 11' })).toBeVisible()
+  await expect(page.getByRole('cell', { name: 'Customer 11' })).toBeVisible()
 })
 
 test('filter by status ', async ({ page }) => {
@@ -62,7 +62,7 @@ test('filter by status ', async ({ page }) => {
   await page.getByLabel('Pendente').click()
   await page.getByRole('button', { name: 'Filtrar reultados' }).click()
 
-  const tableRows = await page.getByRole('cell', { name: 'Pendente' }).all()
+  const tableRows = page.getByRole('cell', { name: 'Pendente' })
 
-  expect(tableRows).toHaveLength(10)
+  await expect(tableRows).toHaveCount(10)
 })

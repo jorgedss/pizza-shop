@@ -17,6 +17,5 @@ test('update profile successfully', async ({ page }) => {
   await page.getByRole('button', { name: 'Close' }).click()
   await page.waitForTimeout(1000)
 
-  expect(page.getByRole('button', { name: 'Rocket pizza' })).toBeVisible()
-  await page.waitForTimeout(1000)
+  await expect(page.getByRole('button', { name: 'Rocket pizza' })).toBeVisible()
 })
